@@ -44,3 +44,9 @@ services:
     ports:
       - "80:9090"
 
+  testing:
+    image: ghcr.io/musikfreunde/testing-api:1.0
+    container_name: testing-api
+    ports:
+      - "8083:8083"
+
