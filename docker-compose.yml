@@ -39,14 +39,13 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
   backend:
-    image: ghcr.io/musikfreunde/leocode-backend:9.0
+    image: ghcr.io/musikfreunde/leocode-backend:12.0
     container_name: leocode-backend
     ports:
       - "80:9090"
 
   testing:
-    image: ghcr.io/musikfreunde/testing-api:9.0
+    image: ghcr.io/musikfreunde/testing-api:12.0
     container_name: testing-api
     ports:
       - "8083:8083"
-
