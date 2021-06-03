@@ -41,4 +41,6 @@ services:
   backend:
     image: ghcr.io/musikfreunde/leocode-backend:6.0
     container_name: leocode-backend
+    ports:
+      - "80:9090"
 
