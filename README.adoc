@@ -1,5 +1,5 @@
 = Leo Code
-Christian Donnabauer The One And Only
+Christian Donnabauer Dave
 1.0, 2020-06-21
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
