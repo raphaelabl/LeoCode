@@ -39,6 +39,6 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
   backend:
-    image: ghcr.io/musikfreunde/leocode-backend
+    image: ghcr.io/musikfreunde/leocode-backend:6.0
     container_name: leocode-backend
 
