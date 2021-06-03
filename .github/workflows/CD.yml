@@ -6,7 +6,7 @@ name: CD
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    tags: ['*']
+    tags: [ '*' ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -42,7 +42,6 @@ jobs:
           echo VERSION=$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-
   build_testing:
     name: Build testing
       runs-on: ubuntu-latest
