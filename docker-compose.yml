@@ -9,6 +9,11 @@ services:
       - POSTGRES_DB=db
     ports:
       - "5432:5432"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5432" ]
+      interval: 10s
+      timeout: 1s
+      retries: 3
   zookeeper:
     image: strimzi/kafka:0.19.0-kafka-2.5.0
     container_name: leocode-zookeeper
