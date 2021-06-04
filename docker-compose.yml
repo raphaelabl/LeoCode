@@ -41,6 +41,10 @@ services:
   backend:
     image: ghcr.io/musikfreunde/leocode-backend:14.0
     container_name: leocode-backend
+    depends_on:
+      - postgres-db
+    links:
+      - postgres-db
     ports:
       - "80:9090"
 
