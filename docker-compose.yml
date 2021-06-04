@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: [ "CMD", "ss", "-tulpn", "|","grep","5432" ]
+      test: [ "CMD","grep","5432" ]
       interval: 5s
       timeout: 1s
       retries: 2
@@ -46,11 +46,11 @@ services:
   backend:
     image: ghcr.io/musikfreunde/leocode-backend:14.0
     container_name: leocode-backend
+    restart: on-failure
     depends_on:
-      postgres-db:
-        condition: service_healthy
+      - postgres-db
     links:
-        - postgres-db
+      - postgres-db
     ports:
       - "80:9090"
 
