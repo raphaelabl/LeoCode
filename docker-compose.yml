@@ -10,8 +10,8 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: [ "CMD","grep","5432" ]
-      interval: 5s
+      test: [ "CMD","ss","-tulpn","|","grep","5432" ]
+      interval: 10s
       timeout: 1s
       retries: 2
   zookeeper:
