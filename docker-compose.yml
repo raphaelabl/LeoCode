@@ -9,11 +9,6 @@ services:
       - POSTGRES_DB=db
     ports:
       - "5432:5432"
-    healthcheck:
-      test: [ "CMD","ss","-tulpn","|","grep","5432" ]
-      interval: 10s
-      timeout: 1s
-      retries: 2
   zookeeper:
     image: strimzi/kafka:0.19.0-kafka-2.5.0
     container_name: leocode-zookeeper
@@ -46,11 +41,6 @@ services:
   backend:
     image: ghcr.io/musikfreunde/leocode-backend:14.0
     container_name: leocode-backend
-    restart: on-failure
-    depends_on:
-      - postgres-db
-    links:
-      - postgres-db
     ports:
       - "80:9090"
 
