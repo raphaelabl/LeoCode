@@ -7,6 +7,11 @@ services:
       - POSTGRES_USER=app
       - POSTGRES_PASSWORD=app
       - POSTGRES_DB=db
+    healthcheck:
+      test: [ "CMD", "pg_isready -U quarkus" ]
+      interval: 5s
+      timeout: 5s
+      retries: 6
     ports:
       - "5432:5432"
   zookeeper:
@@ -42,9 +47,8 @@ services:
     image: ghcr.io/musikfreunde/leocode-backend:14.0
     container_name: leocode-backend
     depends_on:
-      - postgres-db
-    links:
-      - postgres-db
+      postgres-db:
+        condition: service_healthy
     ports:
       - "80:9090"
 
