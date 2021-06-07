@@ -9,6 +9,9 @@ services:
       - POSTGRES_DB=db
     ports:
       - "5432:5432"
+    networks:
+      - quarkus
+
   zookeeper:
     image: strimzi/kafka:0.19.0-kafka-2.5.0
     container_name: leocode-zookeeper
@@ -45,9 +48,15 @@ services:
       - postgres-db
     ports:
       - "80:9090"
+    networks:
+      - quarkus
 
   testing:
     image: ghcr.io/musikfreunde/testing-api:14.0
     container_name: testing-api
     ports:
       - "8083:8083"
+
+networks:
+  quarkus:
+    driver: bridge
