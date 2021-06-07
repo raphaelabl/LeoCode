@@ -8,7 +8,7 @@ services:
       - POSTGRES_PASSWORD=app
       - POSTGRES_DB=db
     healthcheck:
-      test: [ "CMD", "pg_isready -U app" ]
+      test: [ "CMD", "nmap", "localhost", "5432" ]
       interval: 5s
       timeout: 5s
       retries: 6
