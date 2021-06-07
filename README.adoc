@@ -1,5 +1,5 @@
 = Leo Code
-Christian Donnabauer dock
+Christian Donnabauer docki
 1.0, 2020-06-21
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
