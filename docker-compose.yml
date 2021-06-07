@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   postgres-db:
-    image: postgres:12.3
+    image: postgres:12.4
     container_name: postgres-db
     environment:
       - POSTGRES_USER=app
