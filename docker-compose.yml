@@ -1,17 +1,12 @@
 version: '3.1'
 services:
   postgres-db:
-    image: postgres:12.4
+    image: postgres:12.3
     container_name: postgres-db
     environment:
       - POSTGRES_USER=app
       - POSTGRES_PASSWORD=app
       - POSTGRES_DB=db
-    healthcheck:
-      test: [ "CMD", "nmap", "localhost", "5432" ]
-      interval: 5s
-      timeout: 5s
-      retries: 6
     ports:
       - "5432:5432"
   zookeeper:
@@ -47,8 +42,7 @@ services:
     image: ghcr.io/musikfreunde/leocode-backend:14.0
     container_name: leocode-backend
     depends_on:
-      postgres-db:
-        condition: service_healthy
+      - postgres-db
     ports:
       - "80:9090"
 
