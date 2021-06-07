@@ -52,7 +52,7 @@ services:
       - QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://postgres-db:5432/db
       - QUARKUS_HTTP_CORS_ORIGINS=*
       - QUARKUS_HTTP_CORS_METHODS=*
-      - QUARKUS_HTTP_CORS=true
+      - QUARKUS_HTTP_CORS=false
       - QUARKUS_HTTP_CORS_HEADERS=*
       - QUARKUS_HTTP_HOST=0.0.0.0
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
@@ -68,7 +68,6 @@ services:
     container_name: testing-api
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
-      - QUARKUS_HTTP_CORS=true
     ports:
       - "8083:8083"
     networks:
