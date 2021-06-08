@@ -54,6 +54,7 @@ services:
       - QUARKUS_HTTP_CORS_METHODS=*
       - QUARKUS_HTTP_CORS=true
       - QUARKUS_HTTP_CORS_HEADERS=*
+      - QUARKUS_HTTP_HOST=0.0.0.0
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     depends_on:
       - postgres-db
