@@ -77,7 +77,7 @@ services:
 
   frontend:
     image: zbenii/leofrontend:latest
-    container_name: frontend
+    container_name: leocode-backend
     ports:
       - "80:80"
     networks:
