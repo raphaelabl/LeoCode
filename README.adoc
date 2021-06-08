@@ -1,5 +1,5 @@
 = Leo Code
-Christian Donnabauer docker
+Christian Donnabauer
 1.0, 2020-06-21
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
