@@ -50,11 +50,11 @@ services:
     container_name: leocode-backend
     environment:
       - QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://postgres-db:5432/db
-#      - QUARKUS_HTTP_CORS_METHODS=*
-#      - QUARKUS_HTTP_CORS=true
-#      - QUARKUS_HTTP_CORS_ORIGINS=*
-#     - QUARKUS_HTTP_CORS_HEADERS=*
-#      - QUARKUS_HTTP_HOST=backend
+      - QUARKUS_HTTP_CORS_METHODS=*
+      - QUARKUS_HTTP_CORS=true
+      - QUARKUS_HTTP_CORS_ORIGINS=*
+      - QUARKUS_HTTP_CORS_HEADERS=*
+      - QUARKUS_HTTP_HOST=backend
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     depends_on:
       - postgres-db
@@ -76,12 +76,12 @@ services:
     networks:
       - quarkus
 
-#  frontend:
-#    image: zbenii/leofrontend:latest
-#    ports:
-#      - "8181:80"
-#    networks:
-#     - quarkus
+  frontend:
+    image: zbenii/leofrontend:latest
+    ports:
+      - "8181:80"
+    networks:
+     - quarkus
 
 networks:
   quarkus:
