@@ -62,6 +62,12 @@ services:
       - "9090:9090"
     networks:
       - quarkus
+  frontend:
+    image: zbenii/leofrontend:latest
+    ports:
+      - "80:80"
+    networks:
+      - quarkus
 
   testing:
     image: ghcr.io/musikfreunde/testing-api:16.0
@@ -75,13 +81,6 @@ services:
     networks:
       - quarkus
 
-  frontend:
-    image: zbenii/leofrontend:latest
-    container_name: leocode-backend
-    ports:
-      - "80:80"
-    networks:
-      - quarkus
 
 networks:
   quarkus:
