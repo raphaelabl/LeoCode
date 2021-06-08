@@ -59,7 +59,7 @@ services:
       - postgres-db
       - kafka
     ports:
-      - "9090:9090"
+      - "80:9090"
     networks:
       - quarkus
 
