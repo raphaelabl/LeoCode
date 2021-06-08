@@ -75,10 +75,10 @@ services:
     networks:
       - quarkus
 
- frontend:
-   image: zbenii/leofrontend:latest
-   container_name: frontend
-   ports:
+  frontend:
+    image: zbenii/leofrontend:latest
+    container_name: frontend
+    ports:
       - "80:80"
     networks:
       - quarkus
