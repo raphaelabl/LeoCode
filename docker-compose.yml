@@ -59,7 +59,7 @@ services:
     depends_on:
       - postgres-db
     ports:
-      - "80:9090"
+      - "9090:9090"
     networks:
       - quarkus
 
