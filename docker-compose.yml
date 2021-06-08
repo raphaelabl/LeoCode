@@ -75,12 +75,12 @@ services:
     networks:
       - quarkus
 
-  frontend:
-    image: zbenii/leofrontend:latest
-    ports:
-      - "8181:80"
-    networks:
-     - quarkus
+#  frontend:
+#    image: zbenii/leofrontend:latest
+#    ports:
+#      - "8181:80"
+#    networks:
+#     - quarkus
 
 networks:
   quarkus:
