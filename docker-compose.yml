@@ -59,7 +59,7 @@ services:
       - postgres-db
       - kafka
     ports:
-      - "80:9090"
+      - "9090:9090"
     networks:
       - quarkus
 
@@ -75,13 +75,13 @@ services:
     networks:
       - quarkus
 
-#  frontend:
-#   image: zbenii/leofrontend:latest
-#    container_name: frontend
-#    ports:
-#      - "80:80"
-#    networks:
-#      - quarkus
+ frontend:
+   image: zbenii/leofrontend:latest
+   container_name: frontend
+   ports:
+      - "80:80"
+    networks:
+      - quarkus
 
 networks:
   quarkus:
