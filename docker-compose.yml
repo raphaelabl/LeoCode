@@ -69,7 +69,6 @@ services:
     container_name: testing-api
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
-      - QUARKUS_HTTP_CORS=true
     depends_on:
       - kafka
     ports:
