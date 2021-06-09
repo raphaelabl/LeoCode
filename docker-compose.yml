@@ -52,15 +52,14 @@ services:
       - QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://postgres-db:5432/db
       - QUARKUS_HTTP_CORS_METHODS=*
       - QUARKUS_HTTP_CORS=true
-      - QUARKUS_HTTP_CORS_ORIGINS=*
+      - QUARKUS_HTTP_CORS_ORIGINS=http://vm147.htl-leonding.ac.at
       - QUARKUS_HTTP_CORS_HEADERS=*
-      - QUARKUS_HTTP_HOST=backend
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     depends_on:
       - postgres-db
       - kafka
     ports:
-      - "80:9090"
+      - "8181:9090"
     networks:
       - quarkus
 
@@ -78,8 +77,9 @@ services:
 
   frontend:
     image: zbenii/leofrontend:latest
+    container_name: leofrontend
     ports:
-      - "8181:80"
+      - "80:80"
     networks:
      - quarkus
 
