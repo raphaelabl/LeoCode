@@ -83,13 +83,13 @@ services:
     networks:
      - quarkus
 
-  jenkins:
-    image: zbenii/leojenkins:latest
-    container_name: leojenkins
-    ports:
-    - "8080:8080"
-    networks:
-      - quarkus
+#  jenkins:
+#    image: zbenii/leojenkins:latest
+#    container_name: leojenkins
+#    ports:
+#    - "7070:8080"
+#    networks:
+#      - quarkus
 
 networks:
   quarkus:
