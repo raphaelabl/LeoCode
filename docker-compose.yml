@@ -95,6 +95,8 @@ services:
     ports:
       - 8280:8080
     container_name: leocode-identity-provider
+    networks:
+      - quarkus
 
 #  jenkins:
 #    image: zbenii/leojenkins:latest
