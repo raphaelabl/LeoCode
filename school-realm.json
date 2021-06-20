@@ -685,7 +685,7 @@
         "http://vm147.htl-leonding.ac.at/*"
       ],
       "webOrigins": [
-        "+"
+        "*"
       ],
       "notBefore": 0,
       "bearerOnly": false,
