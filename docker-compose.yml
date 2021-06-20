@@ -109,5 +109,3 @@ services:
 networks:
   quarkus:
     driver: bridge
-
-
