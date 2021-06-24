@@ -23,7 +23,7 @@ public class LeocodeFileRepository implements PanacheRepository<LeocodeFile> {
 
     void onStart(@Observes StartupEvent ev) {
         File file = new File(directoryPath);
-        boolean isCreated = file.mkdir();
+        boolean isCreated = file.mkdir(
         if(isCreated){
             System.out.println("Directory created successfully");
         }else{
