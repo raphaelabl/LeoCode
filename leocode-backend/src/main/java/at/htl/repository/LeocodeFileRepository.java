@@ -4,6 +4,7 @@ import at.htl.entity.Example;
 import at.htl.entity.LeocodeFile;
 import at.htl.entity.LeocodeFileType;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.runtime.Startup;
 import io.quarkus.runtime.StartupEvent;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 
@@ -18,6 +19,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+@Startup
 @ApplicationScoped
 public class LeocodeFileRepository implements PanacheRepository<LeocodeFile> {
 
