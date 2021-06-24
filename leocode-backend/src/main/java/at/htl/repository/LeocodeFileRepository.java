@@ -4,15 +4,14 @@ import at.htl.entity.Example;
 import at.htl.entity.LeocodeFile;
 import at.htl.entity.LeocodeFileType;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.runtime.StartupEvent;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
 import javax.transaction.Transactional;
 import javax.ws.rs.core.MultivaluedMap;
-import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -22,6 +21,17 @@ import java.util.zip.ZipOutputStream;
 @ApplicationScoped
 public class LeocodeFileRepository implements PanacheRepository<LeocodeFile> {
 
+    void onStart(@Observes StartupEvent ev) {
+        File file = new File(directoryPath);
+        boolean isCreated = file.mkdir();
+        if(isCreated){
+            System.out.println("Directory created successfully");
+        }else{
+            System.out.println("Sorry couldn’t create specified directory");
+        }
+    }
+
+    public final String directoryPath = "../../projects-in-queue";
     public final String zipLocation = "../../projects-in-queue/project-under-test";
 
     public String getMultipartFileName(MultivaluedMap<String, String> header) {
