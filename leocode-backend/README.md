@@ -1,4 +1,4 @@
-# leocode-backend project
+# leocode-backend projects
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
