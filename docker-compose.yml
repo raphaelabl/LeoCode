@@ -109,7 +109,6 @@ services:
 #    - "7070:8080"
 #    networks:
 #      - quarkus
-
 volumes:
     projects-in-queue:
 
