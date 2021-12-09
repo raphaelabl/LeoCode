@@ -1,0 +1,4 @@
+docker run  -v $(pwd)/Jenkinsfile:/workspace/Jenkinsfile jenkins/jenkinsfile-runner
+docker run  -v $(pwd)/Jenkinsfile:/workspace/Jenkinsfile jenkinsfile-runner-leocode:latest
+docker build -t jenkinsfile-runner-leocode .
+
