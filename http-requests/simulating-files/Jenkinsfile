@@ -1,14 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-        }
-    }
+    agent any 
     stages {
-        stage('Test') {
+        stage('Stage 1') {
             steps {
-                sh 'mvn test'
+                echo 'Hello world!' 
             }
         }
     }
-}
+} 
