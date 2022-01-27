@@ -1,7 +1,11 @@
-FROM jenkins/jenkinsfile-runner
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-RUN cat /usr/share/jenkins/ref/plugins.txt
-COPY jenkins.war /app/jenkins/jenkins.war
-RUN java -jar /app/bin/jenkins-plugin-manager.jar --war /app/jenkins/jenkins.war --plugin-file /usr/share/jenkins/ref/plugins.txt
-RUN rm /app/jenkins/jenkins.war
-RUN cd /usr/share/jenkins/ref/plugins && ls -l && rm -rf *.hpi
+FROM ppiper/jenkinsfile-runner
+COPY plugins.txt /usr/share/jenkins/plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/plugins.txt
+RUN apt update
+RUN apt install -y apt-transport-https ca-certificates curl software-properties-common
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+RUN apt update
+RUN apt install -y docker-ce
+RUN bash service docker start
+
