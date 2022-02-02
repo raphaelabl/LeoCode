@@ -27,7 +27,7 @@ public class FileHandler {
     private final String PULL_JENKINSFILERUNNER_IMAGE_SCRIPT =  "docker pull ppiper/jenkinsfile-runner";
     private final Path PROJECT_UNDER_TEST_DIRECTORY = Paths.get("../project-under-test/");
     private final Path BUILD_RESULT = Paths.get("../result.txt");
-    private final Path DOCKER_PULL_SCRIPT = Paths.get("../../pull-image.sh");
+    private final Path DOCKER_PULL_SCRIPT = Paths.get("../pull-image.sh");
     private final Path RUN_TEST_SCRIPT = Paths.get("../run-tests.sh");
     private final List<String> SHELL_SCRIPT_CONTENT = Arrays.asList("cd " + PROJECT_UNDER_TEST_DIRECTORY.toString(),
             "docker run  -v "+ PROJECT_UNDER_TEST_DIRECTORY.toString() + ":/workspace/ ppiper/jenkinsfile-runner > log.txt",
@@ -43,7 +43,7 @@ public class FileHandler {
     //Pull image at the beginning, so testing goes faster
     void onStart(@Observes StartupEvent ev)  {
         File dockerPullShellscript = DOCKER_PULL_SCRIPT.toFile();
-        ProcessBuilder builder = new ProcessBuilder("../../pull-image.sh");
+        ProcessBuilder builder = new ProcessBuilder("../pull-image.sh");
         try
         {
             Files.write(dockerPullShellscript.toPath(), Arrays.asList(PULL_JENKINSFILERUNNER_IMAGE_SCRIPT), StandardCharsets.UTF_8);
@@ -179,7 +179,9 @@ public class FileHandler {
                 fileDestination.append("/java/");
 
                 //evaluate packages & filename
+
                 String packages = br.readLine();
+                log.info(packages);
                 packages = packages
                         .substring(
                                 packages.lastIndexOf(" ") + 1,
