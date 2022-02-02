@@ -67,7 +67,7 @@ services:
       - quarkus
 
   testing:
-    image: ghcr.io/musikfreunde/testing-api30.0
+    image: ghcr.io/musikfreunde/testing-api:30.0
     user: root
     volumes:
       - ./projects-in-queue:/projects-in-queue
