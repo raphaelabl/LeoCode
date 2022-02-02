@@ -67,7 +67,7 @@ services:
       - quarkus
 
   testing:
-    image: ghcr.io/musikfreunde/testing-api:28.0
+    image: ghcr.io/musikfreunde/testing-api:29.0
     user: root
     command: bash -c "microdnf install docker"
     volumes:
