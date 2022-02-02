@@ -46,6 +46,8 @@ public class FileHandler {
         ProcessBuilder builder = new ProcessBuilder("../pull-image.sh");
         try
         {
+            dockerPullShellscript.createNewFile();
+            dockerPullShellscript.setExecutable(true);
             Files.write(dockerPullShellscript.toPath(), Arrays.asList(PULL_JENKINSFILERUNNER_IMAGE_SCRIPT), StandardCharsets.UTF_8);
             Process process = builder.start();
             int exitCode = process.waitFor();
