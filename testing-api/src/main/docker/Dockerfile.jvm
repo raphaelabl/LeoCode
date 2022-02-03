@@ -32,13 +32,10 @@ RUN microdnf install curl ca-certificates ${JAVA_PACKAGE} \
     && microdnf update \
     && microdnf clean all \
     # important, so that testing api has docker installed!
-    ## && microdnf install docker \
+    && microdnf install docker \
+    #&& chown 1001 / \
+    #&& chmod "g+rwX" / \
     #&& mount --make-rshared / \
-    && microdnf install yum \
-    && yum install -y yum-utils \
-    && yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo \
-    && yum install docker-ce docker-ce-cli containerd.io \
-    && systemctl start docker \
     && mkdir /deployments \
     && chown 1001 /deployments \
     && chmod "g+rwX" /deployments \
