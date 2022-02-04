@@ -30,8 +30,8 @@ public class FileHandler {
     private final Path DOCKER_PULL_SCRIPT = Paths.get("../pull-image.sh");
     private final Path RUN_TEST_SCRIPT = Paths.get("../run-tests.sh");
     private final List<String> SHELL_SCRIPT_CONTENT = Arrays.asList("cd " + PROJECT_UNDER_TEST_DIRECTORY.toString(),
-            "docker run  -v "+ Paths.get("/project-under-test").toString() + ":/workspace ppiper/jenkinsfile-runner > log.txt",
-            "tail -n 1 log.txt > " + BUILD_RESULT.toString());
+            "docker run  -v "+ Paths.get("project-under-test").toString() + ":/workspace ppiper/jenkinsfile-runner > log.txt",
+            "tail -n 1 log.txt > " + Paths.get("../result.txt").toString());
 
     public Path pathToProject;
     public HashMap<Path, String> currentFiles;
