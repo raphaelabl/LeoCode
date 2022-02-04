@@ -22,6 +22,10 @@ RUN apt-get -y install docker-ce docker-ce-cli
 
 WORKDIR /app
 
-COPY target/*-runner.jar application.jar
+RUN mkdir deployment
 
-ENTRYPOINT ["java", "-jar", "application.jar"] 
+RUN mkdir deployment/quarkus-app
+
+COPY target/*-runner.jar deployment/quarkus-app/application.jar
+
+ENTRYPOINT ["java", "-jar", "deployment/quarkus-app/application.jar"] 
