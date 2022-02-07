@@ -1,10 +1,14 @@
 pipeline {
-    agent any 
+    agent {
+        any {
+            image 'maven:3-alpine'
+        }
+    }
     stages {
-        stage('Stage 1') {
+        stage('Test') {
             steps {
-                echo 'Hello world!' 
+                sh 'mvn test'
             }
         }
     }
-} 
+}
