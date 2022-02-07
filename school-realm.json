@@ -2442,7 +2442,7 @@
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
     "secret" : "217b2cec-e9ca-4f54-b868-91142f16d619",
-    "redirectUris" : [ "https://frontend/*" ],
+    "redirectUris" : [ "http://frontend:80/*" ],
     "webOrigins" : [ "+" ],
     "notBefore" : 0,
     "bearerOnly" : false,
