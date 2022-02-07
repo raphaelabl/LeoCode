@@ -69,6 +69,7 @@ services:
   testing:
     image: ghcr.io/musikfreunde/testing-api:32.0
     user: root
+    container_name: testing
     volumes:
       - ./projects-in-queue:/projects-in-queue
       - /var/run/docker.sock:/var/run/docker.sock
@@ -84,7 +85,7 @@ services:
       - quarkus
 
   frontend:
-    image: zbenii/leofrontend:latest
+    image: ghcr.io/musikfreunde/leocode-frontend:latest
     container_name: leofrontend
     ports:
       - "80:80"
