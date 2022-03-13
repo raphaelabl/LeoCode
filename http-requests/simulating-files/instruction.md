@@ -1,4 +1,4 @@
-# Hello World! Java
+# Hello World! in Java
 ## Ziel
 Erlernen von Einsteiger-Skills in Java.
 ## Aufgabe
