@@ -117,12 +117,14 @@ services:
 volumes:
     projects-in-queue:
       driver: local
+      name: projects-in-queue
       driver_opts:
         type: 'none'
         o: 'bind'
         device: './projects-in-queue'
     project-under-test:
       driver: local
+      name: project-under-test
       driver_opts:
         type: 'none'
         o: 'bind'
