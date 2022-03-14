@@ -4,6 +4,7 @@ import at.htl.entity.Submission;
 
 import javax.ws.rs.PathParam;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class SubmissionDTO {
         this.id = submission.id;
         this.status = submission.getStatus().toString();
         this.result = submission.result;
-        this.lastTimeChanged = submission.lastTimeChanged.format(DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy"));
+        this.lastTimeChanged = submission.lastTimeChanged.atZone(ZoneId.of( "Europe/Paris" )).format(DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy"));
     }
 
 }

@@ -15,6 +15,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -31,6 +32,7 @@ public class LeocodeFileRepository implements PanacheRepository<LeocodeFile> {
         }else{
             System.out.println("Sorry couldn’t create specified directory");
         }
+        Locale.setDefault(Locale.GERMANY);
     }
 
     public final String directoryPath = "../../projects-in-queue";

@@ -25,8 +25,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.sse.Sse;
 import javax.ws.rs.sse.SseEventSink;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Path("/submission")
@@ -118,7 +123,7 @@ public class SubmissionEndpoint {
         if (currentSubmission != null) {
 
             String res = String.format("%tT Uhr: %s",
-                    currentSubmission.lastTimeChanged,
+                    currentSubmission.lastTimeChanged.atZone(ZoneId.of( "Europe/Paris" )),
                     currentSubmission.getStatus().toString());
 
             sseEventSink.send(sse.newEvent(res));
@@ -134,7 +139,7 @@ public class SubmissionEndpoint {
                 if (id.equals(submission.id)) {
 
                     String res = String.format("%tT Uhr: %s",
-                            submission.lastTimeChanged,
+                            currentSubmission.lastTimeChanged.atZone(ZoneId.of( "Europe/Paris" )),
                             submission.getStatus().toString());
 
                     sseEventSink.send(sse.newEvent(res));
