@@ -116,6 +116,7 @@ services:
 #      - quarkus
 volumes:
     projects-in-queue:
+    project-under-test:
 
 networks:
   quarkus:
