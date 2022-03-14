@@ -11,7 +11,7 @@ import java.time.ZoneId;
 public class Submission extends PanacheEntity {
     public String pathToProject;
     public String author;
-    public String result;
+    public String result = "";
     @Enumerated(value = EnumType.STRING)
     private SubmissionStatus status; //private so the timestamp gets updated, whenever it is set => see setter
     @Column(columnDefinition = "TIMESTAMP")
