@@ -115,6 +115,7 @@ public class SubmissionEndpoint {
     @Path("/{id}")
     @Produces(MediaType.SERVER_SENT_EVENTS)
     @SseElementType("text/plain")
+    @Transactional
     public void stream(@Context Sse sse, @Context SseEventSink sseEventSink, @PathParam("id") Long id) {
         Submission currentSubmission = submissionRepository.findById(id);
         boolean canSubscribe = false;
@@ -148,6 +149,7 @@ public class SubmissionEndpoint {
 
                     if (submission.getStatus() != SubmissionStatus.SUBMITTED) {
                         sseEventSink.close();
+                        this.submissionRepository.getEntityManager().merge(submission);
                     }
                 }
             });
