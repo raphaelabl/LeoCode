@@ -4,6 +4,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity
 @Table(name = "LC_SUBMISSIONS")
@@ -32,7 +33,7 @@ public class Submission extends PanacheEntity {
 
     public void setStatus(SubmissionStatus status) {
         this.status = status;
-        this.lastTimeChanged = LocalDateTime.now();
+        this.lastTimeChanged = LocalDateTime.now(ZoneId.of( "Europe/Paris" ));
     }
 
     public SubmissionStatus getStatus() {

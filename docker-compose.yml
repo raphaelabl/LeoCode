@@ -46,7 +46,7 @@ services:
       - quarkus
 
   backend:
-    image: ghcr.io/musikfreunde/leocode-backend:26.0
+    image: ghcr.io/musikfreunde/leocode-backend:27.0
     user: root
     container_name: backend
     volumes:
