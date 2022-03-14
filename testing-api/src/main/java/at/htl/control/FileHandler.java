@@ -236,6 +236,9 @@ public class FileHandler {
     public SubmissionStatus evaluateStatus(String result){
         log.info("evaluateStatus");
 
+        List<String> resultList = List.of(result.split("\n"));
+        result = resultList.get(resultList.size()-1);
+
         result = result.substring(result.lastIndexOf(" ") + 1);
 
         SubmissionStatus status;
