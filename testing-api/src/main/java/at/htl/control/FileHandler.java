@@ -226,7 +226,7 @@ public class FileHandler {
     public String getResult(){
         log.info("getResult");
         try (BufferedReader br = new BufferedReader(new FileReader("../result.txt"))) {
-            return br.readLine();
+            return br.lines().collect(Collectors.joining(System.lineSeparator()));
         } catch (IOException e) {
             e.printStackTrace();
             return "Something Went Wrong";
