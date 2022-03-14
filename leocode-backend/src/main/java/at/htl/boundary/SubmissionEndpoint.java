@@ -142,7 +142,7 @@ public class SubmissionEndpoint {
                     String res = String.format("%tT Uhr: %s;%s",
                             currentSubmission.lastTimeChanged.atZone(ZoneId.of( "Europe/Paris" )),
                             submission.getStatus().toString(),
-                            currentSubmission.result);
+                            submission.result);
 
                     sseEventSink.send(sse.newEvent(res));
 
