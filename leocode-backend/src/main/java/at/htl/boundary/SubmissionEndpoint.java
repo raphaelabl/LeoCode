@@ -18,7 +18,10 @@ import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import javax.inject.Inject;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
 import javax.transaction.Transactional;
+import javax.transaction.UserTransaction;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -55,6 +58,9 @@ public class SubmissionEndpoint {
 
     @Inject
     SubmissionProducer submissionProducer;
+
+    @Inject
+    UserTransaction transaction;
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -115,7 +121,6 @@ public class SubmissionEndpoint {
     @Path("/{id}")
     @Produces(MediaType.SERVER_SENT_EVENTS)
     @SseElementType("text/plain")
-    @Transactional
     public void stream(@Context Sse sse, @Context SseEventSink sseEventSink, @PathParam("id") Long id) {
         Submission currentSubmission = submissionRepository.findById(id);
         boolean canSubscribe = false;
@@ -151,7 +156,15 @@ public class SubmissionEndpoint {
                         sseEventSink.close();
                         List<String> resultList = List.of(submission.result.split("\n"));
                         submission.result = resultList.get(resultList.size()-1);
-                        this.submissionRepository.getEntityManager().merge(submission);
+
+                        try {
+                            transaction.begin();
+                            this.submissionRepository.getEntityManager().merge(submission);
+                            transaction.commit();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
             });
