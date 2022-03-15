@@ -121,6 +121,7 @@ public class SubmissionEndpoint {
     @Path("/{id}")
     @Produces(MediaType.SERVER_SENT_EVENTS)
     @SseElementType("text/plain")
+    @Transactional(Transactional.TxType.MANDATORY)
     public void stream(@Context Sse sse, @Context SseEventSink sseEventSink, @PathParam("id") Long id) {
         Submission currentSubmission = submissionRepository.findById(id);
         boolean canSubscribe = false;
@@ -157,14 +158,7 @@ public class SubmissionEndpoint {
                         List<String> resultList = List.of(submission.result.split("\n"));
                         submission.result = resultList.get(resultList.size()-1);
                         log.info(submission.result);
-                        try {
-                            transaction.begin();
-                            this.submissionRepository.getEntityManager().merge(submission);
-                            transaction.commit();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
+                        this.submissionRepository.getEntityManager().merge(submission);
                     }
                 }
             });
