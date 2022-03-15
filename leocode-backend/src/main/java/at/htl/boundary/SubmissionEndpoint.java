@@ -121,7 +121,7 @@ public class SubmissionEndpoint {
     @Path("/{id}")
     @Produces(MediaType.SERVER_SENT_EVENTS)
     @SseElementType("text/plain")
-    @Transactional()
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void stream(@Context Sse sse, @Context SseEventSink sseEventSink, @PathParam("id") Long id) {
         Submission currentSubmission = submissionRepository.findById(id);
         boolean canSubscribe = false;
