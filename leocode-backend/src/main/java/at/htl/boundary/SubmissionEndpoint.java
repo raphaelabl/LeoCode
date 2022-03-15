@@ -149,6 +149,8 @@ public class SubmissionEndpoint {
 
                     if (submission.getStatus() != SubmissionStatus.SUBMITTED) {
                         sseEventSink.close();
+                        List<String> resultList = List.of(submission.result.split("\n"));
+                        submission.result = resultList.get(resultList.size()-1);
                         this.submissionRepository.getEntityManager().merge(submission);
                     }
                 }
