@@ -156,7 +156,7 @@ public class SubmissionEndpoint {
                         sseEventSink.close();
                         List<String> resultList = List.of(submission.result.split("\n"));
                         submission.result = resultList.get(resultList.size()-1);
-
+                        log.info(submission.result);
                         try {
                             transaction.begin();
                             this.submissionRepository.getEntityManager().merge(submission);
